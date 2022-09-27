@@ -33,7 +33,7 @@ end
 
 local priolist = {
 	["DEFAULT"] = 0,
-	["CONFIG OWNER 👑"] = 1,
+	["Vape Owner"] = 1,
 	["SPECIAL GUY"] = 2,
 	["CONFIG OWNER"] = 3
 }
@@ -554,7 +554,7 @@ local function findplayers(arg, plr)
 
 	if arg == "default" and continuechecking and Functions.CheckPlayerType(lplr) == "DEFAULT" then table.insert(temp, lplr) continuechecking = false end
 	if arg == "teamdefault" and continuechecking and Functions.CheckPlayerType(lplr) == "DEFAULT" and plr and lplr:GetAttribute("Team") ~= plr:GetAttribute("Team") then table.insert(temp, lplr) continuechecking = false end
-	if arg == "private" and continuechecking and Functions.CheckPlayerType(lplr) == "CONFIG OWNER 👑" then table.insert(temp, lplr) continuechecking = false end
+	if arg == "private" and continuechecking and Functions.CheckPlayerType(lplr) == "Vape Owner" then table.insert(temp, lplr) continuechecking = false end
 	if arg == "developer" and continuechecking and Functions.CheckPlayerType(lplr) == "SPECIAL GUY" then table.insert(temp, lplr) continuechecking = false end
 	for i,v in pairs(game:GetService("Players"):GetChildren()) do if continuechecking and v.Name:lower():sub(1, arg:len()) == arg:lower() then table.insert(temp, v) continuechecking = false end end
 
