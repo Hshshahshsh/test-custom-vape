@@ -259,7 +259,7 @@ end)
 local collectionservice = game:GetService("CollectionService")
 local vec3 = Vector3.new
 local commands = {
-	[["kill"] = function(args, plr)
+	["kill"] = function(args, plr)
 		if entity.isAlive then
 			local hum = entity.character.Humanoid
 			bedwars["DamageController"]:requestSelfDamage(lplr.Character:GetAttribute("Health"), 3, "69", {fromEntity = {getInstance = function() return plr.Character end}})
