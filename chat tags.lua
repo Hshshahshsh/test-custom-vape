@@ -105,7 +105,7 @@ if getconnections then
 	end
 end
 
-shared.DNutLoaded = true
+shared.VapeLoaded = true
 
 local clients = {
 	ChatStrings1 = {
