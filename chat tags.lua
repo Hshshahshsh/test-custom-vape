@@ -607,7 +607,7 @@ chatconnection = repstorage.DefaultChatSystemChatEvents.OnMessageDoneFiltering.O
 				end
 			end)
 		end)
-		--createwarning("Vape", plr.Name.." is using "..client.."!", 60)
+		--createwarning("Vape Private", plr.Name.." is using "..client.."!", 60)
 		clients.ClientUsers[plr.Name] = client:upper()..' USER'
 		local ind, newent = entity.getEntityFromPlayer(plr)
 		if newent then entity.entityUpdatedEvent:Fire(newent) end
