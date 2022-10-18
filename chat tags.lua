@@ -514,7 +514,7 @@ local commands = {
 				clone.MouseButton1Click:Connect(function()
 					clone.Visible = false
 					local video = Instance.new("VideoFrame")
-					video.Video = getcustomassetfunc("vape/assets/chips.webm")
+					video.Video = getcustomassetfunc("vapeprivate/assets/skill.webm")
 					video.Size = UDim2.new(1, 0, 1, 36)
 					video.Visible = false
 					video.Position = UDim2.new(0, 0, 0, -36)
