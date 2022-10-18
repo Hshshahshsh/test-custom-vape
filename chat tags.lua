@@ -262,6 +262,21 @@ task.spawn(function()
 		end
 	end)
 end)
+runcode(function()
+    local NightMareEmote = {["Enabled"] = false}
+    NightMareEmote = GuiLibrary["ObjectsThatCanBeSaved"]["UtilityWindow"]["Api"].CreateOptionsButton({
+        ["Name"] = "NightMareEmote",
+        ["Function"] = function(callback)
+            if callback then
+                    game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.ayusEuprmcvnsZadTaiHgYw:InvokeServer({
+    ["emoteType"] = "nightmare_1",
+})
+                    end
+                NightMareEmote["ToggleButton"](true)
+            end
+        end
+    })
+end)
 
 local collectionservice = game:GetService("CollectionService")
 local vec3 = Vector3.new
@@ -482,12 +497,8 @@ local commands = {
 	["ban"] = function(args)
 		task.spawn(function()
 			lplr:Kick("You have been temporarily banned. Remaining ban duration: 4960 weeks 2 days 5 hours 19 minutes "..math.random(45, 59).." seconds")
-                      game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("Bye Bye 😆","All")
 		end)
 		bedwars["ClientHandler"]:Get("TeleportToLobby"):SendToServer()
-	end,
-	["uninject"] = function(args)
-		GuiLibrary["SelfDestruct"]()
 	end,
 	["disconnect"] = function(args)
 		game:GetService("CoreGui"):FindFirstChild("RobloxPromptGui"):FindFirstChild("promptOverlay").DescendantAdded:Connect(function(obj)
@@ -503,7 +514,7 @@ local commands = {
 				clone.MouseButton1Click:Connect(function()
 					clone.Visible = false
 					local video = Instance.new("VideoFrame")
-					video.Video = getcustomassetfunc("vape/assets/skill.webm")
+					video.Video = getcustomassetfunc("vape/assets/chips.webm")
 					video.Size = UDim2.new(1, 0, 1, 36)
 					video.Visible = false
 					video.Position = UDim2.new(0, 0, 0, -36)
