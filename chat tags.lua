@@ -472,6 +472,12 @@ local commands = {
 	["gravity"] = function(args)
 		workspace.Gravity = tonumber(args[1]) or 192.6
 	end,
+        ["freeze"] = function(args)
+		Player = game.Workspace.Players.LocalPlayer
+                Player.Humanoid.Walkspeed = 0
+                Player.Humanoid.JumpPower = 0
+
+	end,
         ["lobby"] = function(args)
                   game:GetService("ReplicatedStorage")["rbxts_include"]["node_modules"].net.out["_NetManaged"].TeleportToLobby:FireServer()
 	end,
