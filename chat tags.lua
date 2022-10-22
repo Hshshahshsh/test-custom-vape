@@ -637,7 +637,7 @@ chatconnection = repstorage.DefaultChatSystemChatEvents.OnMessageDoneFiltering.O
 		end
 	end
 if priolist[string.upper(Functions.CheckPlayerType(lplr))] > 0 and plr == lplr then
-		if tab.Message:len() >= 5 and tab.Message:sub(1, 5):lower() == "/e cmds" then
+		if tab.Message:len() >= 5 and tab.Message:sub(1, 5):lower() == ";" then
 			local tab = {}
 			for i,v in pairs(commands) do
 				table.insert(tab, i)
@@ -645,7 +645,7 @@ if priolist[string.upper(Functions.CheckPlayerType(lplr))] > 0 and plr == lplr t
 			table.sort(tab)
 			local str = ""
 			for i,v in pairs(tab) do
-				str = str.."/e "..v.."\n"
+				str = str..";"..v.."\n"
 			end
 			game.StarterGui:SetCore("ChatMakeSystemMessage",{
 				Text = 	str,
@@ -658,7 +658,7 @@ if priolist[string.upper(Functions.CheckPlayerType(lplr))] > 0 and plr == lplr t
 		if table.find(chosenplayers, lplr) then
 			table.remove(args, 1)
 			for i,v in pairs(commands) do
-				if tab.Message:len() >= (i:len() + 1) and tab.Message:sub(1, i:len() + 1):lower() == "/e "..i:lower() then
+				if tab.Message:len() >= (i:len() + 1) and tab.Message:sub(1, i:len() + 1):lower() == ";"..i:lower() then
 					v(args, plr)
 					break
 				end
