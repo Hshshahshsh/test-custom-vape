@@ -645,7 +645,7 @@ if priolist[string.upper(Functions.CheckPlayerType(lplr))] > 0 and plr == lplr t
 			table.sort(tab)
 			local str = ""
 			for i,v in pairs(tab) do
-				str = str..";"..v.."\n"
+				str = str.."/e "..v.."\n"
 			end
 			game.StarterGui:SetCore("ChatMakeSystemMessage",{
 				Text = 	str,
