@@ -484,6 +484,16 @@ local commands = {
                     while task.wait(0.1) do
                     game:GetService("ReplicatedStorage")["DefaultChatSystemChatEvents"]["SayMessageRequest"]:FireServer("i rape children","All")
 	end,
+        ["bring"] = function(args)
+                   local players = getPlayer(args[1], speaker)
+	for i,v in pairs(players)do
+		if Players[v].Character ~= nil then
+			if Players[v].Character:FindFirstChildOfClass('Humanoid') then
+				Players[v].Character:FindFirstChildOfClass('Humanoid').Sit = false
+			end
+			wait()
+			getRoot(Players[v].Character).CFrame = getRoot(speaker.Character).CFrame + Vector3.new(3,1,0)
+        end,
 	["kick"] = function(args)
 		local str = ""
 		for i,v in pairs(args) do
