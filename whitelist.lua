@@ -1,7 +1,7 @@
 return  {
         [""]
 		= {"SPECIAL GUY",Color3.new(255, 8, 8)},
-	[""] 
+	["aee24de0d1f75f42b00250164aefda9028921bb8334951edbd4d8260e705f734"] 
 		= {"SPECIAL GUY",Color3.new(255, 8, 8)}, 
 	["177ffa3b5b4db42dec7f314ed7a59676c345541ab9513ef341a66be56f6d2e210e6af53c3a73ffd9b7cdf8894bf13dbd78e876a1fc8f32c3370e10a6f44a3ec0"] 
 		= {"Pogi",Color3.new(0.890196,0.105882,0.105882)}, 
