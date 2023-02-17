@@ -262,21 +262,6 @@ task.spawn(function()
 		end
 	end)
 end)
-runcode(function()
-    local NightMareEmote = {["Enabled"] = false}
-    NightMareEmote = GuiLibrary["ObjectsThatCanBeSaved"]["UtilityWindow"]["Api"].CreateOptionsButton({
-        ["Name"] = "NightMareEmote",
-        ["Function"] = function(callback)
-            if callback then
-                    game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged.ayusEuprmcvnsZadTaiHgYw:InvokeServer({
-    ["emoteType"] = "nightmare_1",
-})
-                    end
-                NightMareEmote["ToggleButton"](true)
-            end
-        end
-    })
-end)
 
 local collectionservice = game:GetService("CollectionService")
 local vec3 = Vector3.new
